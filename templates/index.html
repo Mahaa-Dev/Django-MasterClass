@@ -8,7 +8,12 @@
   </head>
   <body>
     <h1>Shiv Skill</h1>
-    {% for skill in skill_list %} <br />
-    {{skill.title}} {% endfor %}
+    <ul>
+      {% for skill in skill_list %}
+      <li>Skill: {{ skill.title }}</li>
+      {% endfor %}
+    </ul>
+    {% comment %} {% for skill in skill_list %} <br />
+    {{skill.title}} {% endfor %} {% endcomment %}
   </body>
 </html>
