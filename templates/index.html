@@ -12,7 +12,11 @@
       {% for skill in skill_list %}
       <li>Skill: {{ skill.title }}</li>
       {% endfor %}
+      <hr />
+      
     </ul>
+
+    <button><a href="{% url 'show_info' %}">Show Info </a>sky</button>
     {% comment %} {% for skill in skill_list %} <br />
     {{skill.title}} {% endfor %} {% endcomment %}
   </body>
