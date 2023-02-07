@@ -7,17 +7,28 @@
     <title>Shiv</title>
   </head>
   <body>
-    <h1>Shiv Skill</h1>
+    <h1>{{details.full_name}}</h1>
+
+    <p>{{details.description | safe}}</p>
+
     <ul>
       {% for skill in skill_list %}
       <li>Skill: {{ skill.title }}</li>
       {% endfor %}
       <hr />
-      
     </ul>
 
-    <button><a href="{% url 'show_info' %}">Show Info </a>sky</button>
-    {% comment %} {% for skill in skill_list %} <br />
+    <a href="{%url 'contact' %}">Take me to contact form</a>
+
+    <h3>Contact Me</h3>
+    <hr />
+    <form action="{%url 'contact' %}" method="post">
+      {%csrf_token%} {{form.as_p}}
+      <input type="submit" />
+    </form>
+    {% comment %}
+    <button><a href="{% url 'show_info' %}">Show Info </a></button> {%
+    endcomment %} {% comment %} {% for skill in skill_list %} <br />
     {{skill.title}} {% endfor %} {% endcomment %}
   </body>
 </html>

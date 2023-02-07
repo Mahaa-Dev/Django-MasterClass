@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-from .models import Skill, MyDetail
+from .models import Skill, MyDetail,Contact
 
 admin.site.register([
     Skill,
-    MyDetail
+    MyDetail,
+    Contact
 ])
 
 # Register your models here.

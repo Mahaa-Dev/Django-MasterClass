@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from .models import Skill, MyDetail
+from .models import Skill, MyDetail, Contact
+from .forms import ContactForm
 
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 
 
 # class IndexPageView(TemplateView):
@@ -21,16 +22,23 @@ class IndexPageView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context["skill_list"] = Skill.objects.all()
-        context_1 = {"details": MyDetail.objects.all()}
-        context.update(context_1)
-        return context
-
-
-class Information(TemplateView):
-    template_name = "info.html"
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context["details"] = MyDetail.objects.all()
+        context["details"] = MyDetail.objects.last()
+        context["form"] = ContactForm()
 
         return context
+
+
+# class Information(TemplateView):
+#     template_name = "info.html"
+
+#     def get_context_data(self, *args, **kwargs):
+#         context = super().get_context_data(*args, **kwargs)
+
+
+#         return context
+
+class ContactCreate(CreateView):
+    template_name = "contact_create.html"
+    model = Contact
+    form_class = ContactForm
+    success_url = "/user/detail/"
